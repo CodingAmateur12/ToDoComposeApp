@@ -19,6 +19,6 @@ import androidx.room.RoomDatabase
 @Database(entities = [ToDoTask::class], version =1 , exportSchema = false)
 abstract class ToDoDatabase: RoomDatabase()  {
 
-    //returns toDoDao interface 
+    //returns toDoDao interface
     abstract fun toDoDao(): ToDoDao
 }

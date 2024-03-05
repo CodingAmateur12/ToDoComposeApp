@@ -11,7 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.todocompose.ui.theme.ToDoComposeTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+
+//we will only have one activity in which case this one. No fragments and multiple composables.
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
