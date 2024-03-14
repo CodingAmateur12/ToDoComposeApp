@@ -1,9 +1,12 @@
 package com.example.todocompose.ui.viewmodels
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.todocompose.data.models.ToDoTask
 import com.example.todocompose.data.repositories.ToDoRepository
+import com.example.todocompose.util.SearchAppBarState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,6 +20,13 @@ import javax.inject.Inject
 class SharedViewModel @Inject constructor(
     private val repository: ToDoRepository
 ): ViewModel() {
+//default value of state of bar is closed by default
+    //only when we will trigger search icon then it changes to open
+    val searchAppBarState: MutableState<SearchAppBarState> =
+        mutableStateOf(SearchAppBarState.CLOSED)
+    //this will be used to set text in textfield
+    val searchTextState: MutableState<String> = mutableStateOf("")
+
 //coroutines flow
     //empty list to satisfy type of the list
     private val _allTasks =

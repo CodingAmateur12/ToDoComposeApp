@@ -5,6 +5,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.todocompose.ui.screens.list.ListScreen
+import com.example.todocompose.ui.viewmodels.SharedViewModel
 import com.example.todocompose.util.Constants.LIST_ARGUMENT_KEY
 import com.example.todocompose.util.Constants.LIST_SCREEN
 
@@ -12,7 +13,8 @@ import com.example.todocompose.util.Constants.LIST_SCREEN
 //here we defined the route and the argument
 //key of argument and type of argument
 fun NavGraphBuilder.listComposable(
-    navigateToTaskScreen: (taskId: Int) -> Unit
+    navigateToTaskScreen: (taskId: Int) -> Unit,
+    sharedViewModel: SharedViewModel
 ){
     composable(
         route = LIST_SCREEN,
@@ -20,6 +22,7 @@ fun NavGraphBuilder.listComposable(
             type = NavType.StringType
         })
     ){
-        ListScreen(navigateToTaskScreen = navigateToTaskScreen)
+        ListScreen(navigateToTaskScreen = navigateToTaskScreen,
+            sharedViewModel = sharedViewModel)
     }
 }
